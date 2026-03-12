@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jorge Ramírez Sánchez</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#020617,#0f172a);
+color:white;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* CARD */
+
+.profile-card{
+
+background:#1e293b;
+padding:50px;
+border-radius:20px;
+text-align:center;
+width:400px;
+
+box-shadow:0 20px 40px rgba(0,0,0,0.6);
+
+animation:fadeIn 1.2s ease;
+}
+
+/* FOTO */
+
+.profile-card img{
+
+width:140px;
+height:140px;
+border-radius:50%;
+border:4px solid #38bdf8;
+
+margin-bottom:20px;
+
+transition:transform .4s;
+
+}
+
+.profile-card img:hover{
+transform:scale(1.1) rotate(3deg);
+}
+
+/* NOMBRE */
+
+.profile-card h1{
+font-size:28px;
+margin-bottom:10px;
+}
+
+/* DESCRIPCION */
+
+.profile-card p{
+opacity:0.8;
+margin-bottom:20px;
+}
+
+/* LINKS */
+
+.links a{
+
+display:inline-block;
+margin:10px;
+padding:10px 18px;
+
+background:#38bdf8;
+color:black;
+text-decoration:none;
+
+border-radius:8px;
+font-weight:600;
+
+transition:all .3s;
+
+}
+
+.links a:hover{
+transform:translateY(-3px);
+background:#0ea5e9;
+}
+
+/* HOBBIES */
+
+.hobbies{
+
+margin-top:25px;
+text-align:left;
+
+}
+
+.hobbies h2{
+margin-bottom:10px;
+font-size:20px;
+}
+
+.hobbies ul{
+list-style:none;
+}
+
+.hobbies li{
+margin-bottom:6px;
+opacity:0.9;
+}
+
+/* BOTON VOLVER */
+
+.back{
+
+margin-top:30px;
+display:inline-block;
+
+color:#38bdf8;
+text-decoration:none;
+
+}
+
+.back:hover{
+text-decoration:underline;
+}
+
+/* ANIMACION */
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+<div class="profile-card">
+
+<img src="https://github.com/ualjrs249.png" alt="Jorge Ramírez Sánchez">
+
+<h1>Jorge Ramírez Sánchez</h1>
+
+<p>
+Estudiante de Ingeniería Informática en la Universidad de Almería.
+Interesado en desarrollo web, tecnologías modernas
+y creación de proyectos colaborativos.
+</p>
+
+<div class="links">
+
+<a href="https://github.com/ualjrs249" target="_blank">
+GitHub
+</a>
+
+<a href="../index.html">
+Blog del equipo
+</a>
+
+</div>
+
+
+<div class="hobbies">
+
+<h2>Intereses</h2>
+
+<ul>
+
+<li>💻 Desarrollo web</li>
+<li>🧠 Aprender nuevas tecnologías</li>
+<li>⚙️ Ingeniería de software</li>
+<li>🚀 Proyectos colaborativos</li>
+
+</ul>
+
+</div>
+
+<a class="back" href="../index.html">
+← Volver al blog
+</a>
+
+</div>
+
+</body>
+
+</html>
