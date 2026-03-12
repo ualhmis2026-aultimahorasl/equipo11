@@ -2,10 +2,11 @@
 <html lang="es">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Última Hora SL | Blog de Desarrollo</title>
+<title>Última Hora SL | Blog del equipo</title>
 
 <style>
 
@@ -13,7 +14,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Segoe UI, Arial;
+font-family:'Segoe UI',Arial,sans-serif;
 }
 
 body{
@@ -29,6 +30,8 @@ justify-content:space-between;
 align-items:center;
 padding:20px 10%;
 background:#020617;
+position:sticky;
+top:0;
 }
 
 nav h1{
@@ -42,6 +45,10 @@ margin-left:20px;
 font-weight:500;
 }
 
+nav a:hover{
+color:#38bdf8;
+}
+
 /* HERO */
 
 .hero{
@@ -52,16 +59,17 @@ justify-content:center;
 align-items:center;
 text-align:center;
 background:linear-gradient(135deg,#0f172a,#1e293b);
+padding:20px;
 }
 
 .hero h2{
-font-size:50px;
+font-size:48px;
 margin-bottom:20px;
 }
 
 .hero p{
-font-size:20px;
 max-width:700px;
+font-size:18px;
 opacity:0.9;
 }
 
@@ -74,9 +82,14 @@ color:black;
 font-size:16px;
 border-radius:6px;
 cursor:pointer;
+font-weight:bold;
 }
 
-/* SECTIONS */
+.hero button:hover{
+background:#0ea5e9;
+}
+
+/* CONTENEDOR */
 
 .container{
 width:90%;
@@ -95,7 +108,7 @@ text-align:center;
 
 .posts{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:25px;
 }
 
@@ -107,15 +120,39 @@ transition:0.3s;
 }
 
 .post:hover{
-transform:translateY(-5px);
+transform:translateY(-6px);
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
 }
 
 .post h3{
 margin-bottom:10px;
 }
 
-.post p{
-opacity:0.8;
+.post .date{
+font-size:14px;
+color:#94a3b8;
+margin-bottom:10px;
+}
+
+.read-btn{
+
+display:inline-block;
+margin-top:15px;
+
+background:#38bdf8;
+color:black;
+
+padding:8px 14px;
+
+border-radius:6px;
+
+text-decoration:none;
+font-weight:600;
+
+}
+
+.read-btn:hover{
+background:#0ea5e9;
 }
 
 /* TEAM */
@@ -133,15 +170,45 @@ padding:30px;
 border-radius:10px;
 text-align:center;
 width:250px;
+transition:.3s;
+}
+
+.member:hover{
+transform:translateY(-5px);
+}
+
+.member img{
+width:90px;
+height:90px;
+border-radius:50%;
+margin-bottom:15px;
+border:3px solid #38bdf8;
 }
 
 .member h3{
-margin-bottom:10px;
+margin-bottom:5px;
 }
 
 .member a{
 color:#38bdf8;
 text-decoration:none;
+}
+
+/* CONTACTO */
+
+.contact{
+text-align:center;
+}
+
+.contact a{
+display:inline-block;
+margin-top:15px;
+background:#38bdf8;
+color:black;
+padding:10px 20px;
+border-radius:6px;
+text-decoration:none;
+font-weight:bold;
 }
 
 /* FOOTER */
@@ -154,6 +221,7 @@ opacity:0.7;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -176,10 +244,10 @@ opacity:0.7;
 <h2>Blog del equipo Última Hora SL</h2>
 
 <p>
-Proyecto desarrollado para la asignatura
+Blog colaborativo desarrollado para la asignatura
 Herramientas y Métodos en Ingeniería del Software.
-Compartimos nuestro proceso de desarrollo,
-herramientas y aprendizajes.
+Compartimos nuestro proceso de desarrollo, herramientas
+y experiencias durante el proyecto.
 </p>
 
 <button onclick="location.href='#posts'">
@@ -196,21 +264,38 @@ Ver últimas entradas
 <div class="posts">
 
 <div class="post">
-<h3>Introducción al proyecto</h3>
-<p>12 Marzo 2026</p>
+
+<h3>Despliegue del blog en GitHub Pages</h3>
+
+<p class="date">12 marzo 2026</p>
+
 <p>
-Presentación del blog del equipo y las herramientas
-que utilizaremos durante el proyecto.
+Guía paso a paso sobre cómo publicar un sitio web utilizando
+GitHub Pages y desplegar un blog directamente desde un repositorio.
 </p>
+
+<a class="read-btn" href="posts/post-github-pages.md">
+Leer artículo
+</a>
+
 </div>
 
+
 <div class="post">
-<h3>Configuración del entorno</h3>
-<p>Próximamente</p>
+
+<h3>Mejores prácticas para el control de versiones con Git</h3>
+
+<p class="date">12 marzo 2026</p>
+
 <p>
-Guía para preparar el entorno de desarrollo
-con GitHub y Visual Studio Code.
+Consejos y estrategias para trabajar correctamente con Git
+en proyectos colaborativos utilizando ramas y Pull Requests.
 </p>
+
+<a class="read-btn" href="posts/post-git.md">
+Leer artículo
+</a>
+
 </div>
 
 </div>
@@ -225,15 +310,32 @@ con GitHub y Visual Studio Code.
 <div class="team">
 
 <div class="member">
+
+<img src="https://github.com/ualvrh954.png">
+
 <h3>Víctor Ruz Hernández</h3>
+
 <p>Desarrollador</p>
-<a href="members/victor.html">Perfil</a>
+
+<a href="members/victor.html">
+Ver perfil
+</a>
+
 </div>
 
+
 <div class="member">
+
+<img src="https://github.com/ualjrs249.png">
+
 <h3>Jorge Ramírez Sánchez</h3>
+
 <p>Desarrollador</p>
-<a href="members/jorge.html">Perfil</a>
+
+<a href="members/jorge.html">
+Ver perfil
+</a>
+
 </div>
 
 </div>
@@ -241,11 +343,30 @@ con GitHub y Visual Studio Code.
 </section>
 
 
+<section class="container contact">
+
+<h2 class="section-title">Contacto</h2>
+
+<p>
+Si deseas contactar con el equipo puedes utilizar
+nuestro formulario de contacto.
+</p>
+
+<a href="contact.html">
+Ir a contacto
+</a>
+
+</section>
+
+
 <footer>
 
-<p>© 2026 Última Hora SL | Universidad de Almería</p>
+<p>
+© 2026 Última Hora SL — Universidad de Almería
+</p>
 
 </footer>
 
 </body>
+
 </html>
