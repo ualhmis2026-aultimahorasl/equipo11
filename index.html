@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -82,7 +84,6 @@
   }
   .nav-cta:hover { background: var(--accent2) !important; }
 
-  /* HERO */
   .hero {
     position: relative; min-height: 88vh;
     display: flex; flex-direction: column;
@@ -112,16 +113,14 @@
     color: var(--accent); font-size: 12px; font-weight: 600;
     letter-spacing: 1.5px; text-transform: uppercase;
     padding: 6px 14px; border-radius: 100px; margin-bottom: 32px;
-    position: relative;
-    animation: fadeUp 0.5s ease both 0.1s;
+    position: relative; animation: fadeUp 0.5s ease both 0.1s;
   }
 
   .hero h1 {
     font-family: 'Syne', sans-serif; font-weight: 800;
     font-size: clamp(48px, 7vw, 96px); line-height: 1;
     letter-spacing: -3px; max-width: 800px; margin-bottom: 28px;
-    position: relative;
-    animation: fadeUp 0.5s ease both 0.2s;
+    position: relative; animation: fadeUp 0.5s ease both 0.2s;
   }
 
   .hero h1 em { font-style: normal; color: var(--accent); }
@@ -129,14 +128,12 @@
   .hero-sub {
     font-size: 18px; color: var(--muted);
     max-width: 520px; line-height: 1.7; margin-bottom: 44px;
-    position: relative;
-    animation: fadeUp 0.5s ease both 0.3s;
+    position: relative; animation: fadeUp 0.5s ease both 0.3s;
   }
 
   .hero-actions {
     display: flex; gap: 16px; flex-wrap: wrap;
-    position: relative;
-    animation: fadeUp 0.5s ease both 0.4s;
+    position: relative; animation: fadeUp 0.5s ease both 0.4s;
   }
 
   .btn-primary {
@@ -161,7 +158,6 @@
   }
   .btn-secondary:hover { border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
 
-  /* STATS */
   .stats-bar {
     display: flex;
     border-top: 1px solid var(--border);
@@ -190,19 +186,12 @@
 
   .stat-label { font-size: 13px; color: var(--muted); margin-top: 3px; }
 
-  /* SECTIONS */
   section { position: relative; z-index: 1; }
 
-  .section-wrap {
-    padding: 96px 6%; max-width: 1200px; margin: 0 auto;
-  }
+  .section-wrap { padding: 96px 6%; max-width: 1200px; margin: 0 auto; }
 
-  .section-eyebrow {
-    display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
-  }
-
+  .section-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
   .eyebrow-line { width: 32px; height: 2px; background: var(--accent); }
-
   .eyebrow-text {
     font-size: 12px; font-weight: 600; letter-spacing: 2px;
     text-transform: uppercase; color: var(--accent);
@@ -213,7 +202,6 @@
     font-size: clamp(28px, 4vw, 42px); letter-spacing: -1px; margin-bottom: 48px;
   }
 
-  /* POSTS */
   .posts-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
   }
@@ -265,7 +253,6 @@
   .post-link i { transition: transform 0.2s; }
   .post-card:hover .post-link i { transform: translateX(4px); }
 
-  /* TEAM */
   .team-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
   }
@@ -301,7 +288,6 @@
   }
   .member-link:hover { background: rgba(249,115,22,0.2); }
 
-  /* ABOUT */
   .about-block {
     background: var(--surface); border: 1px solid var(--border);
     border-radius: 16px; padding: 48px;
@@ -325,7 +311,6 @@
   }
   .tech-tag i { color: var(--accent); }
 
-  /* CONTACT CTA */
   .contact-cta {
     background: linear-gradient(135deg, var(--surface) 0%, rgba(249,115,22,0.05) 100%);
     border: 1px solid var(--border); border-radius: 16px;
@@ -342,7 +327,6 @@
     max-width: 480px; margin-left: auto; margin-right: auto;
   }
 
-  /* FOOTER */
   footer {
     border-top: 1px solid var(--border); padding: 32px 6%;
     display: flex; align-items: center; justify-content: space-between;
