@@ -1,0 +1,403 @@
+---
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ page.title }} — A Última Hora SL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --bg: #060a12;
+    --surface: #0d1424;
+    --surface2: #111827;
+    --accent: #f97316;
+    --accent2: #fb923c;
+    --text: #f1f5f9;
+    --muted: #64748b;
+    --border: rgba(249,115,22,0.15);
+    --glow: rgba(249,115,22,0.08);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content:'';
+    position:fixed;
+    inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 6%;
+    background: rgba(6,10,18,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-brand {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none; color: inherit;
+  }
+
+  .nav-dot {
+    width: 10px; height: 10px;
+    background: var(--accent); border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(249,115,22,0.4); }
+    50%      { box-shadow: 0 0 0 8px rgba(249,115,22,0); }
+  }
+
+  .brand-name {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: 18px; letter-spacing: -0.5px;
+  }
+  .brand-name span { color: var(--accent); }
+
+  .nav-back {
+    display: flex; align-items: center; gap: 8px;
+    color: var(--muted); text-decoration: none;
+    font-size: 14px; font-weight: 500; transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--text); }
+
+  /* POST HEADER */
+  .post-header {
+    position: relative;
+    padding: 80px 6% 64px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .post-header-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(249,115,22,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(249,115,22,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 100% at 50% 100%, black, transparent);
+  }
+
+  .post-header-glow {
+    position: absolute; top: -40%; right: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(249,115,22,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .post-header-content { position: relative; max-width: 780px; }
+
+  .post-meta-top {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 28px; flex-wrap: wrap;
+  }
+
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--muted); text-decoration: none; font-size: 13px;
+    font-weight: 500; transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--accent); }
+
+  .meta-divider { color: var(--border); }
+
+  .post-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(249,115,22,0.1); border: 1px solid var(--border);
+    color: var(--accent); font-size: 11px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 100px;
+  }
+
+  .post-header h1 {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: clamp(28px, 5vw, 52px); letter-spacing: -2px;
+    line-height: 1.1; margin-bottom: 28px;
+    animation: fadeUp 0.5s ease both 0.1s;
+  }
+
+  .post-info {
+    display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  }
+
+  .post-info-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 14px; color: var(--muted);
+  }
+
+  .post-info-item i { color: var(--accent); font-size: 13px; }
+
+  .author-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 2px solid var(--accent); object-fit: cover;
+  }
+
+  /* ARTICLE BODY */
+  .post-body {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 64px 6%;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* CONTENT STYLES */
+  .post-content { line-height: 1.8; font-size: 17px; }
+
+  .post-content h1,
+  .post-content h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin: 48px 0 20px;
+    color: var(--text);
+  }
+
+  .post-content h1 { font-size: 32px; }
+  .post-content h2 { font-size: 26px; }
+
+  .post-content h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600; font-size: 20px;
+    margin: 32px 0 14px; color: var(--text);
+  }
+
+  .post-content p { color: #cbd5e1; margin-bottom: 20px; }
+
+  .post-content strong { color: var(--text); font-weight: 600; }
+
+  .post-content em { color: var(--accent2); font-style: italic; }
+
+  .post-content a {
+    color: var(--accent); text-decoration: underline;
+    text-underline-offset: 3px; transition: color 0.2s;
+  }
+  .post-content a:hover { color: var(--accent2); }
+
+  .post-content ul,
+  .post-content ol {
+    color: #cbd5e1;
+    padding-left: 24px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .post-content li::marker { color: var(--accent); }
+
+  .post-content hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  .post-content blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 16px 24px;
+    margin: 28px 0;
+    background: var(--glow);
+    border-radius: 0 8px 8px 0;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .post-content code {
+    font-family: 'Courier New', monospace;
+    background: var(--surface2);
+    color: var(--accent2);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    border: 1px solid var(--border);
+  }
+
+  .post-content pre {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    overflow-x: auto;
+    margin: 28px 0;
+    position: relative;
+  }
+
+  .post-content pre::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    border-radius: 12px 12px 0 0;
+  }
+
+  .post-content pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #e2e8f0;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* FOOTER OF POST */
+  .post-footer {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 6% 64px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .post-footer-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .post-footer-left { display: flex; align-items: center; gap: 16px; }
+
+  .post-footer-avatar {
+    width: 52px; height: 52px; border-radius: 50%;
+    border: 2px solid var(--accent); object-fit: cover;
+    box-shadow: 0 0 0 4px rgba(249,115,22,0.1);
+  }
+
+  .post-footer-name {
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 3px;
+  }
+
+  .post-footer-role { font-size: 13px; color: var(--muted); }
+
+  .btn-back {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #000;
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 14px;
+    padding: 10px 20px; border-radius: 8px; text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-back:hover { background: var(--accent2); transform: translateY(-2px); }
+
+  /* SITE FOOTER */
+  footer {
+    border-top: 1px solid var(--border); padding: 28px 6%;
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--surface); position: relative; z-index: 1;
+  }
+
+  .footer-brand { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; }
+  .footer-brand span { color: var(--accent); }
+  footer p { font-size: 13px; color: var(--muted); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    .post-footer-card { flex-direction: column; align-items: flex-start; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="{{ '/' | relative_url }}">
+    <div class="nav-dot"></div>
+    <span class="brand-name">A Última <span>Hora</span> SL</span>
+  </a>
+  <a class="nav-back" href="{{ '/' | relative_url }}">
+    <i class="fa-solid fa-arrow-left"></i> Volver al blog
+  </a>
+</nav>
+
+<div class="post-header">
+  <div class="post-header-grid"></div>
+  <div class="post-header-glow"></div>
+  <div class="post-header-content">
+    <div class="post-meta-top">
+      <a class="back-link" href="{{ '/' | relative_url }}">
+        <i class="fa-solid fa-arrow-left"></i> Blog
+      </a>
+      <span class="meta-divider">/</span>
+      <span class="post-tag"><i class="fa-regular fa-file-lines"></i> Entrada</span>
+    </div>
+
+    <h1>{{ page.title }}</h1>
+
+    <div class="post-info">
+      <div class="post-info-item">
+        <i class="fa-regular fa-calendar"></i>
+        {{ page.date | date: "%d de %B de %Y" }}
+      </div>
+      <div class="post-info-item">
+        <i class="fa-solid fa-user"></i>
+        {{ page.author }}
+      </div>
+      <div class="post-info-item">
+        <i class="fa-regular fa-clock"></i>
+        {{ content | number_of_words | divided_by: 200 | plus: 1 }} min de lectura
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="post-body">
+  <div class="post-content">
+    {{ content }}
+  </div>
+</div>
+
+<div class="post-footer">
+  <div class="post-footer-card">
+    <div class="post-footer-left">
+      {% if page.author contains "Víctor" %}
+        <img class="post-footer-avatar" src="https://github.com/ualvrh954.png" alt="{{ page.author }}">
+      {% else %}
+        <img class="post-footer-avatar" src="https://github.com/ualjrs249.png" alt="{{ page.author }}">
+      {% endif %}
+      <div>
+        <div class="post-footer-name">{{ page.author }}</div>
+        <div class="post-footer-role">Desarrollador · Equipo 11 HMIS</div>
+      </div>
+    </div>
+    <a class="btn-back" href="{{ '/' | relative_url }}">
+      <i class="fa-solid fa-arrow-left"></i> Volver al blog
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">A Última <span>Hora</span> SL</div>
+  <p>© 2026 · Universidad de Almería · Equipo 11 HMIS</p>
+</footer>
+
+</body>
+</html>
